@@ -1,0 +1,41 @@
+
+.Content{
+
+    text-align: center;
+    background-color: #979797;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+  
+  .pokeContent{
+    display: flex;
+    margin: 5px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: black;
+  }
+  
+  .sContenedor1{
+    background-color: rgb(234, 238, 184);
+    min-width: 25vh;
+    min-height: 25vh;
+    margin: 5px;
+    text-align: left;
+  }
+  
+  .sContenedor2{
+    background-color: rgb(232, 238, 151);
+    min-width: 27vh;
+    min-height: 27vh;
+    margin: 5px;
+  }
+  .sContenedor3{
+    background-color: rgb(221, 230, 105);
+    min-width: 31vh;
+    min-height: 31vh;
+    margin: 5px;
+  }
