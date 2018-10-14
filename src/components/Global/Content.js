@@ -3,99 +3,47 @@ import React, { Component } from 'react';
 //import './css/Content.css';
 
 
-//Componente
-import Pokemon from './Pokemon'
-//import Pokemon2 from './Pokemon2'
-//import PokeTable from './PokTable'
 
-/*const URLs = (props) => (
+import Pokemon from './Pokemon'
+/*
+const Formato = (props) => (
   <li>{props.url}</li>
 )*/
-
 class Content extends Component {
 
-
-
   constructor(props) {
-    super(props);
 
+    super(props);
     this.state = {
-      //listaurls: [],
-      //resultados: [],
-      url_1: "",
-      //lista: [],
-      //numero: 0,
-      url_2: '',
-      url_3: '',
-      // url_0: ''
+      results: [],
     }
   };
-
   componentDidMount() {
+
     fetch('https://pokeapi.co/api/v2/pokemon/')
-      /*.then(response => response.json())
-        .then(response => {
-          this.setState({
-            results: response.result,
-          })
-        })*/
-
-
       .then(response => response.json())
       .then(response => {
-
-        //for (let i = 0; i < 3; i++) {
-          this.setState({
-
-            //resultados: response.results,
-            url_1: response.results[0].url,
-            url_2: response.results[1].url,
-            url_3: response.results[2].url,
-
-            //lista: Object.values(this.stae.url_1).concat(this.estate.url_1)
-            //listaurls: concat([this.state.url_1])
-            //listaurls: this.state.url_1.concat(this.state.url_1)
-          })
-        //}
-        /*this.setState({
-          lista: response.results.url
-        })*/
-        //console.log(this.state.results)
+        this.setState({
+          results: response.results //[2].url
+        })
       })
-
   }
-/*handleMyFor(){
-  console.log(this.state.resultados)
-  for (let i = 0; i < 6; i++) {
-    this.setState({
-      url_1: resultados.response.results[i].url,
-    })
-  }console.log(this.state.url_1.url)
-}*/
-
-
-
-
-
   render() {
-    //console.log(this.state.url_1.length)
-    //if(this.state.url_1.legth>0){
+
     return (
       <div className="Content">
         <h1>Pokemons</h1>
-        < Pokemon url={this.state.url_1} /*lista={this.state.lista}*//>
-        < Pokemon url={this.state.url_2} /*lista={this.state.lista}*//>
-        < Pokemon url={this.state.url_3} /*lista={this.state.lista}*//>
+        
+        { this.state.results.slice(0,2).map(pokemon =><Pokemon key={pokemon.name} url={pokemon.url}/>) }
+          
       </div>
     );
-  /*}else{
-    return null
-  }*/
-}
-}
+  }
+}//el "key" es un props, pero no se recibe en el .js ya que react lo maneja por si solo
 
 export default Content;
-
-
-//< Pokemon url={this.state.url_1} />
-//{this.state.listaurls.map(listaurls => <URLs url={listaurls.url}/>)}
+//<Pokemon url={this.state.results}/>
+//{ this.state.results.slice(0,2).map(url => <ol key={url.name}><Pokemon url={url}/></ol>) }
+//  { this.state.results.slice(0,2).map(url => <Pokemon url={url}/>) }
+//{this.state.lista.map(lista => <Formato url={lista.url}/>)}
+//{ this.state.results.slice(0,2).map(pokemon => <Pokemon url={pokemon.url}/>) }
